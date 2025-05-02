@@ -23,6 +23,14 @@ class GroupController extends Controller
     public function store(Request $request)
     {
         $group = Group::create($request->all());
+
+        $group = new Group();
+        $group->name = $request->input('name');
+        $group->time = $request->input('time');
+        $group->trainer = $request->input('coach_id');
+        $group->location = $request->input('location');
+        $group->save();
+
         return redirect()->route('groups.index');
     }
 

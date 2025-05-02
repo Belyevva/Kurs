@@ -1,28 +1,35 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Расписание групп</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <title>Расписание</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 <body>
-    <h1>Расписание групп</h1>
-    <table>
-        <tr>
-            <th>Название группы</th>
-            <th>Тренер</th>
-            <th>Время</th>
-            <th>День недели</th>
-        </tr>
-        @foreach ($groups as $group)
-        <tr>
-            <td>{{ $group->name }}</td>
-            <td>{{ $group->coach->name }} {{ $group->coach->surname }}</td>
-            <td>{{ $group->time }}</td>
-            <td>{{ $group->day_of_week }}</td>
-        </tr>
-        @endforeach
-    </table>
+    <div class="container">
+        <h1 class="mt-5">Расписание</h1>
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>Название</th>
+                    <th>Время</th>
+                    <th>Тренер</th>
+                    <th>Зал</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($trainings as $training)
+                    <tr>
+                        <td>{{ $training->name }}</td>
+                        <td>{{ $training->time }}</td>
+                        <td>{{ $training->trainer }}</td>
+                        <td>{{ $training->location }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

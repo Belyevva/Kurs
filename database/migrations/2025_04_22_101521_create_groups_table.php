@@ -14,9 +14,11 @@ class CreateGroupsTable extends Migration
             $table->unsignedInteger('coach_id');
             $table->foreign('coach_id')->references('id_coach')->on('coach');
             $table->string('time');
-            $table->string('day_of_week');
+            $table->string('location');
+            $table->timestamps();
         });
     }
+   
 
     public function down()
     {

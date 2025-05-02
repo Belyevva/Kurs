@@ -9,6 +9,14 @@ use App\Http\Controllers\ScheduleController;
 
 // Главная страница с расписанием
 Route::get('/', [ScheduleController::class, 'index']);
+
+
+Route::get('/', [GroupController::class, 'index'])->name('groups.index');
+Route::get('/create', [GroupController::class, 'create'])->name('groups.create');
+Route::post('/create', [GroupController::class, 'store'])->name('groups.store');
+
+Route::get('/athlets/create', [AthleteController::class, 'create'])->name('athlets.create');
+Route::post('/athlets', [AthleteController::class, 'store'])->name('athlets.store');
 // Маршруты для тренеров
 Route::resource('coaches', CoachController::class);
 
